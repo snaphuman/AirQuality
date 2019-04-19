@@ -1,0 +1,51 @@
+contract AirQuality =
+
+  record sensor =
+    { id          : address,
+      name        : string,
+      latitude    : string,
+      longitude   : string,
+      zipcode     : int,
+      dataset     : list(data) }
+      
+  record data =
+    { timestamp  : int,
+      value      : int,
+      hasCharge  : bool }
+
+  record state =
+    { sensors : map(int, sensor),
+      sensorsLength: int }
+      
+  function init() =
+    { sensors = {},
+      sensorsLength = 0 }
+       
+  public function getSensor(index: int) : sensor =
+    switch(Map.lookup(index, state.sensors))
+      None    => abort("No sensor was found.")
+      Some(x) => x
+      
+  public stateful function registerSensor (name' : string, latitude' : string, longitude' : string, zipcode' : int ) =
+    let sensor = { id = Call.caller, name = name', latitude = latitude', longitude = longitude', zipcode = zipcode', dataset = [] }
+    let index = getSensorsLength() + 1
+    put(state { sensors[index] = sensor, sensorsLength = index })
+    
+  public function getSensorsLength() : int =
+    state.sensorsLength
+    
+  public stateful function registerDataSensor (index: int, timestamp' : int, value' : int )  =
+    let sensor = getSensor(index)
+    let dataset = sensor.dataset
+    
+    let limit : int = 1000
+    let amount : int = 5
+        
+    if (value' >= limit)
+    
+      Chain.spend( Contract.address, amount)
+      
+      let data = {timestamp = timestamp', value = value', hasCharge = true}
+      let updatedDataSet = data::dataset
+      let updatedSensors = state.sensors{ [index].dataset = updatedDataSet }
+      put(state {sensors = updatedSensors})
