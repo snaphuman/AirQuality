@@ -1,5 +1,8 @@
 <template>
   <div id="app">
-    <h1>Air Quality App</h1>
+    <NavBar></NavBar>
+    <MainContent></MainContent>
   </div>
 </template>
+
+<script src="@/services/App.js" />
