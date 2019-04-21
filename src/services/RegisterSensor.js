@@ -5,14 +5,14 @@ export default {
         return {
             client: this.account,
             isLoading: false,
-            sensorArray: [],
+            sensorArray: this.sensors || [],
             sensorName: '',
             sensorLat: '',
             sensorLon: '',
             sensorZipCode: ''
         };
     },
-    props: ['active', 'account'],
+    props: ['active', 'account', 'sensors'],
     methods: {
         async onCallDataAndFunctionAsync(func, args, types) {
             const extraOpts = {
@@ -72,6 +72,12 @@ export default {
     watch: {
         isLoading: function () {
             this.$emit('update:active',this.isLoading);
+        },
+        sensorArray: function () {
+            this.$emit('update:sensors',this.sensorArray);
         }
+    },
+    created () {
+        this.sensorArray = [];
     }
 };
