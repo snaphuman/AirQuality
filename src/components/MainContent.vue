@@ -24,7 +24,9 @@
                 </ul>
             </div>
             <div class="tab-content">
-              <router-view v-bind:active.sync="isLoading"></router-view>
+              <router-view v-bind:active.sync="isLoading"
+                           v-bind:account.sync="client">
+              </router-view>
             </div>
     </section>
 </template>
