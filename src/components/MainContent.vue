@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div class="tab-content">
-              <router-view></router-view>
+              <router-view v-bind:active.sync="isLoading"></router-view>
             </div>
     </section>
 </template>
