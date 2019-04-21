@@ -1,5 +1,11 @@
 # Air Quality Aepp
 
+## Prerequsites
+
+* Git
+* Node + NPM
+* Docker
+
 ## Project setup
 ```
 npm install
@@ -10,28 +16,28 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+Go to the browser and navigate to http://localhost:8080
 
 ## Inialize Æternity node
+
+### Start Docker unit service
+```
+sudo systemctl start docker
+
+```
 
 ### Install Forgae globally
 ```
 npm install -g forgae
 
 ```
+
+### You should be in the project directory
+```
+cd AirQuality
+
+```
+
 ### Start Aeternity node
 ```
 forgae node
@@ -85,7 +91,7 @@ it will return somethig like this:
 ```
 Copy the transaction hash and go to https://testnet.explorer.aepps.com
 
-Paste it in the input search an verify the information.
+Paste it in the input search and verify the information.
 
 ### Customize configuration
 
