@@ -12,9 +12,7 @@
         </div>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start is-link">
-                <a class="navbar-item" href="https://github.com/dansup/bulma-templates">
-                    Home
-                </a>
+              <router-link to="/" class="navbar-item">Inicio</router-link>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
