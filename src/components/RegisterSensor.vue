@@ -50,3 +50,5 @@
      </div>
   </div>
 </template>
+
+<script src="@/services/RegisterSensor.js" />
