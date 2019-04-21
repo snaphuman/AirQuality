@@ -34,12 +34,6 @@
                          <p class="help">ej: 11021</p>
                      </div>
                      <div class="field">
-                         <label class="label">Nickname</label>
-                         <div class="control">
-                             <input class="input is-primary" v-model="userNickname" type="text" placeholder="Enter your Nickname">
-                         </div>
-                     </div>
-                     <div class="field">
                          <div class="control">
                              <button class="button" type="button" v-on:click="this.registerSensor">Registrar</button>
                          </div>
