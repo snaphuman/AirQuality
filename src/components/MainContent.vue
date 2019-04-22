@@ -26,7 +26,8 @@
             <div class="tab-content">
               <router-view v-bind:active.sync="isLoading"
                            v-bind:account.sync="client"
-                           v-bind:sensors.sync="sensorArray">
+                           v-bind:sensors.sync="sensorArray"
+                           v-bind:activated.sync="activatedArray">
               </router-view>
             </div>
     </section>

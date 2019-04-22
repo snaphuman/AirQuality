@@ -11,7 +11,8 @@ export default {
         return {
             isLoading: false,
             client: null,
-            sensorArray: []
+            sensorArray: [],
+            activatedArray: []
         };
     },
     components: {

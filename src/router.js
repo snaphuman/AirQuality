@@ -12,4 +12,4 @@ export default new Router({
         { path: '/watch-sensors', name: 'WathcSensores', component: WatchSensors },
         { path: '/view-data', name: 'ViewData', component: ViewData }
     ]
-})
+});

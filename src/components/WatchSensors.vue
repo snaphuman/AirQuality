@@ -15,13 +15,13 @@
                  </tr>
                </thead>
                <tbody>
-                 <tr v-for="sensor in sensorArray">
+                 <tr v-for="sensor in sensorArray" :key="sensor.index">
                    <td>{{ sensor.index }}</td>
                    <td>{{ sensor.sensorName }}</td>
                    <td>{{ sensor.sensorLat }}</td>
                    <td>{{ sensor.sensorLon }}</td>
                    <td>{{ sensor.sensorZipCode }}</td>
-                   <td><button type="button">Activar</button></td>
+                   <td><button type="button" v-on:click="viewData(sensor.index)">{{ sensor.state }}</button></td>
                  </tr>
 
                </tbody>

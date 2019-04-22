@@ -5,12 +5,31 @@ export default {
         return {
             client: this.account,
             isLoading: false,
-            sensorArray: this.sensors
+            sensorArray: this.sensors,
+            activatedArray: this.activated
         };
     },
-    props: ['active', 'account', 'sensors'],
+    props: ['active', 'account', 'sensors', 'activated'],
     methods: {
+        viewData (index) {
 
+            console.log(index);
+            if (this.activatedArray.includes(index)) {
+
+                var i = this.activatedArray.indexOf(index);
+                if (i > - 1) {
+                    this.activatedArray.splice(i, 1);
+                }
+                this.sensorArray[index - 1].state = "Off";
+
+            } else {
+
+                this.activatedArray.push(index);
+                this.sensorArray[index - 1].state = "On";
+            }
+
+
+        },
         async callAEStatic(func, args ,types) {
 
             this.isLoading = true;
@@ -51,6 +70,7 @@ export default {
     },
     async created (){
 
+        this.sensorArray = [];
         const sensorsLength = await this.getSensorsLength();
 
         for (let i = 1; i <= sensorsLength.value; i++ ) {
@@ -62,7 +82,9 @@ export default {
                 sensorLat: sensor.value[2].value,
                 sensorLon: sensor.value[3].value,
                 sensorZipCode: sensor.value[4].value,
-                index: i
+                index: i,
+                state: 'Off'
+
             });
         }
     },
@@ -72,6 +94,9 @@ export default {
         },
         sensorArray: function () {
             this.$emit('update:sensors',this.sensorArray);
+        },
+        activatedArray: function () {
+            this.$emit('update:activated',this.activatedArray);
         }
     }
 };
