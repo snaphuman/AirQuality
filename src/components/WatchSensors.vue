@@ -1,10 +1,9 @@
 <template>
      <div class="columns">
-         <div class="column is-half is-offset-one-quarter">
+         <div class="column is-8 is-offset-2">
              <div class="box">
              <h2 class="title is-2">Ver sensores</h2>
-
-             <table class="table">
+             <table class="table is-fullwidth">
                <thead>
                  <tr>
                    <th>Id</th>

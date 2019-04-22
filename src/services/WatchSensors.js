@@ -5,7 +5,7 @@ export default {
         return {
             client: this.account,
             isLoading: false,
-            sensorArray: this.sensors 
+            sensorArray: this.sensors
         };
     },
     props: ['active', 'account', 'sensors'],
@@ -50,8 +50,6 @@ export default {
         }
     },
     async created (){
-
-        this.sensorArray = [];
 
         const sensorsLength = await this.getSensorsLength();
 

@@ -5,7 +5,7 @@ export default {
         return {
             client: this.account,
             isLoading: false,
-            sensorArray: this.sensors || [],
+            sensorArray: this.sensors,
             sensorName: '',
             sensorLat: '',
             sensorLon: '',
@@ -76,8 +76,5 @@ export default {
         sensorArray: function () {
             this.$emit('update:sensors',this.sensorArray);
         }
-    },
-    created () {
-        this.sensorArray = [];
     }
 };

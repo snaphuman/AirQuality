@@ -10,7 +10,8 @@ export default {
     data: function () {
         return {
             isLoading: false,
-            client: null
+            client: null,
+            sensorArray: []
         };
     },
     components: {
