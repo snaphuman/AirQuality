@@ -32,3 +32,9 @@
 </template>
 
 <script src="@/services/WatchSensors.js" /> 
+
+<style lang="css" scoped>
+  .hero.is-info .title {
+    color: #363636;
+  }
+</style>
