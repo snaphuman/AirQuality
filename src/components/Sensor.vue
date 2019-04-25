@@ -5,9 +5,8 @@
                <h3 class="title is-3">{{ name }}</h3>
 
                <form>
-                <input class="input" type="text" placeholder="Recieved data"> 
+                <input class="input" type="text" v-model="value" placeholder="Recieved data"> 
                </form>
-               Realtime data...
              </div>
          </div>
      </div>
