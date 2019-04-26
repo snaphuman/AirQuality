@@ -1,4 +1,4 @@
-import Line from 'vue-chartjs';
+import LineChart from '@/services/LineChart';
 
 export default {
     data: function () {
@@ -8,27 +8,47 @@ export default {
             sensorArray: this.sensors,
             name: '',
             value: 0,
+            datacollection: null,
+            currentDate: null,
+            labels: [],
             dataset: []
         };
     },
+    components: {
+        LineChart
+    },
     props: ['active', 'sensors'],
     methods: {
-        generateRandomValue () {
-            this.value = Math.floor((Math.random()*100)+ 1);
+        fillData () {
+            this.datacollection = {
+                labels: this.labels.slice(5),
+                datasets: [
+                    {
+                        label: 'Valor',
+                        backgroundColor: '#f87979',
+                        data: this.dataset.slice(5)
+                    }
+                ]
+            };
+        },
+        getRandomInt () {
+            return Math.floor((Math.random()*10)+ 1);
         }
 
     },
     mounted() {
-        this.interval = setInterval(() => {
-            this.generateRandomValue();
-        },1000);
 
-        this.generateRandomValue();
-    },
-    destroyed() {
-        clearInterval(this.interval);
+        setInterval (() => {
+            let date = new Date();
+            this.currentDate = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+            this.labels.push(this.currentDate);
+            this.dataset.push(this.getRandomInt());
+            this.fillData();
+        },2000);
+
     },
     created() {
+        this.fillData();
 
         this.name = this.sensorArray[this.$vnode.key - 1].sensorName;
         console.log(this.value);

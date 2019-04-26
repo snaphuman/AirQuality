@@ -7,6 +7,7 @@
                <form>
                 <input class="input" type="text" v-model="value" placeholder="Recieved data"> 
                </form>
+               <line-chart :chart-data="datacollection"></line-chart>
              </div>
          </div>
      </div>
